@@ -11,7 +11,8 @@
     "convert-source-map": "^1.5.0",
     "istanbul-lib-instrument": "^1.7.3",
     "loader-utils": "^1.1.0",
-    "schema-utils": "^0.3.0"
+    "schema-utils": "^0.3.0",
+    "snyk": "^1.316.1"
   },
   "engines": {
     "node": ">= 4.3 < 5.0.0 || >= 5.10"
@@ -25,7 +26,7 @@
     "lint": "eslint --cache src test",
     "lint-staged": "lint-staged",
     "prebuild": "npm run clean",
-    "prepublish": "npm run build",
+    "prepublish": "npm run snyk-protect && npm run build",
     "release": "standard-version",
     "security": "nsp check",
     "test": "jest",
@@ -35,7 +36,8 @@
     "travis:lint": "npm run lint && npm run security",
     "travis:test": "npm run test -- --runInBand",
     "appveyor:test": "npm run test",
-    "webpack-defaults": "webpack-defaults"
+    "webpack-defaults": "webpack-defaults",
+    "snyk-protect": "snyk protect"
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",
@@ -75,5 +77,6 @@
   },
   "peerDependencies": {
     "webpack": "^2.0.0 || ^3.0.0"
-  }
+  },
+  "snyk": true
 }
